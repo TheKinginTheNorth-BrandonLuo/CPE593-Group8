@@ -1,0 +1,12 @@
+You must not submit your node_modules folder
+You must remember to save your dependencies to your package.json folder
+You must do basic error checking in each function
+Check for arguments existing and of proper type.
+Throw if anything is out of bounds (ie, trying to perform an incalculable math operation or accessing data that does not exist)
+You MUST use async/await for all asynchronous operations.
+You must remember to update your package.json file to set app.js as your starting script!
+Your HTML must be valid (Links to an external site.) or you will lose points on the assignment.
+Your HTML must make semantical sense; usage of tags for the purpose of simply changing the style of elements (such as i, b, font, center, etc) will result in points being deducted; think in terms of content first, then style with your CSS.
+You can be as creative as you'd like to fulfill front-end requirements; if an implementation is not explicitly stated, however you go about it is fine (provided the HTML is valid and semantical). Design is not a factor in this course.
+All inputs must be properly labeled!
+All previous requirements about the package.json author, start task, dependenices, etc. still apply
