@@ -107,12 +107,11 @@ public class Winnowing {
 
     /** ---- Calculate the digital fingerprint of N-Grams composed of characters. Preprocessing: so the letters become lowercase and spaces are removed  ---- */
     public Set<Integer> winnowUsingCharacters(String text) {
-        text = preTreatInputText(text);//预处理
-//        System.out.println("After pretreatment："+text);
+        text = preTreatInputText(text);
         List<Integer> nh = getHashesForNGramsOfChars(text);
         return buildFingerprintSet(nh);
     }
-    //预处理
+    //pretreatment
     private String preTreatInputText(String text) {
         String regex = "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]";
         String textWithoutPunctuation = text.replaceAll( regex , "Remove punctuation");//Remove punctuation
@@ -158,6 +157,8 @@ public class Winnowing {
 //        int h = hash.hash().asInt();
 //        return Math.abs(h % 10000000);
 //    }
+
+
     /**
      * H(c1...ck) = c1*b^(k - 1) + c2*b^(k - 2) + ... + c(k - 1)*b + ck
      * our self-defined hash algorithm
