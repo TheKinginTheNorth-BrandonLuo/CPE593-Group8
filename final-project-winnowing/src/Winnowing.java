@@ -145,23 +145,69 @@ public class Winnowing {
         return params;
     }
     public static void main(String[] args){
-        System.out.println("good!");
-        Winnowing winnow = new Winnowing();
+        Winnowing winnow = new Winnowing(10, 6);
+        System.out.println("Test 1: Copy Detection for very short text:");
+
         double startTime = System.nanoTime();
-        File file1 = new File("text.txt");
-        String dataSet1 = readFile(file1);
 
-        File file2 = new File("text2.txt");
-        String dataSet2 = readFile(file2);
+        String dataSet1 = readLargeFile("example1.txt");
+        String dataSet2 = readLargeFile("example2.txt");
+        Set<Integer> set1 = winnow.winnowUsingCharacters(dataSet1);
+        Set<Integer> set2 = winnow.winnowUsingCharacters(dataSet2);
+        System.out.println(set1);
+        System.out.println(set2);
+        String similar_percent_1 = winnow.JaccardSimilarityComparison(set1, set2);
+        String similar_percent_2 = winnow.CosineSimilarityComparison(set1, set2);
+
         double endTime = System.nanoTime();
-        double time = (endTime - startTime) / 1000000000.0;
 
-        System.out.println("time = " + time);
-//        System.out.println(dataSet1);
-//        System.out.println(dataSet2);
-        System.out.println(winnow.winnowUsingWords(dataSet1));
-        System.out.println(winnow.winnowUsingWords(dataSet2));
-//        System.out.println(winnow.winnowUsingWords("you will be using HTML, JQuery and Client-side JavaScript on the user's browser to make a simple application that makes AJAX requests for the data needed and then inject the elements and data onto the page.For this lab, "));
-//        System.out.println(winnow.winnowUsingWords("For this lab, you will be using HTML, JQuery and Client-side JavaScript on the user's browser to make a simple application that makes AJAX requests for the data needed and then inject the elements and data onto the page. "));
+        double time = (endTime - startTime) / 1000000000.0;
+        System.out.println("Jaccard Similarity Comparision: " + similar_percent_1 + "%");
+        System.out.println("Cosine Similarity Comparision: " + similar_percent_2 + "%");
+        System.out.println("Total Execution Time: " + time + " s");
+
+        System.out.println("##################################################################");
+
+        System.out.println("Test 2: Copy Detection for long text:");
+        startTime = System.nanoTime();
+
+        String dataSet3 = readLargeFile("example3.txt");
+        String dataSet4 = readLargeFile("example4.txt");
+
+        Set<Integer> set3 = winnow.winnowUsingCharacters(dataSet3);
+        Set<Integer> set4 = winnow.winnowUsingCharacters(dataSet4);
+        System.out.println(set3);
+        System.out.println(set4);
+        String similar_percent_3 = winnow.JaccardSimilarityComparison(set3, set4);
+        String similar_percent_4 = winnow.CosineSimilarityComparison(set3, set4);
+
+        endTime = System.nanoTime();
+
+        time = (endTime - startTime) / 1000000000.0;
+        System.out.println("Jaccard Similarity Comparision: " + similar_percent_3 + "%");
+        System.out.println("Cosine Similarity Comparision: " + similar_percent_4 + "%");
+        System.out.println("Total Execution Time: " + time + " s");
+
+        System.out.println("##################################################################");
+
+        System.out.println("Test 3: Copy Detection for a whole book:");
+        startTime = System.nanoTime();
+
+        String dataSet5 = readLargeFile("text.txt");
+        String dataSet6 = readLargeFile("text2.txt");
+
+        Set<Integer> set5 = winnow.winnowUsingCharacters(dataSet5);
+        Set<Integer> set6 = winnow.winnowUsingCharacters(dataSet6);
+        System.out.println(set5);
+        System.out.println(set6);
+        String similar_percent_5 = winnow.JaccardSimilarityComparison(set5, set6);
+        String similar_percent_6 = winnow.CosineSimilarityComparison(set5, set6);
+
+        endTime = System.nanoTime();
+
+        time = (endTime - startTime) / 1000000000.0;
+        System.out.println("Jaccard Similarity Comparision: " + similar_percent_5 + "%");
+        System.out.println("Cosine Similarity Comparision: " + similar_percent_6 + "%");
+        System.out.println("Total Execution Time: " + time + " s");
     }
 }
