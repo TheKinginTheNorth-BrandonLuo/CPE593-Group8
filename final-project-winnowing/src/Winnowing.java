@@ -8,9 +8,12 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 /***
- * CPE-593 Data Structure and Algorithm Final Project Code for Winnowing
- * Algorithm Yinghao Wang 10455443 Shuai Hao 10432811 Fan Luo 10442682 Dec 13,
- * 2020
+ * CPE-593 Data Structure and Algorithm 
+ * Final Project Code for WinnowingAlgorithm 
+ * Yinghao Wang 10455443 
+ * Shuai Hao 10432811 
+ * Fan Luo 10442682 
+ * Dec 13,2020
  */
 
 public class Winnowing {
